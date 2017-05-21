@@ -21,7 +21,7 @@ public class ActualWorks {
             if (actualWorks != null) {
                 for (int j = 0; j < actualWorks.size(); j++) {
                     int first = getDay(actualWorks.get(j).get("DateIn").toString());
-                    int second = getDay(item[0].toString().toString());
+                    int second = getDay(item[0].toString());
                     if (first == second) {
                         actualWorks.get(j).put("TimeInWork",
                                 Double.parseDouble(actualWorks.get(j).get("TimeInWork").toString()) + Double.parseDouble(item[1].toString()));
