@@ -3,38 +3,38 @@ package model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tUser", schema = "rms")
+@Table(name = "tUser")
 public class User {
+    @Id
+    @Column(name = "UserID")
     private int UserID;
+
+    @Column(name = "Brief")
     private String Brief;
+
+    @Column(name = "Name")
     private String Name;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "UserID")
-    public int getId() {
+    public int getUserID() {
         return UserID;
     }
-    public void setUserID(int userID) {
-        this.UserID = userID;
+    public void setUserID(int UserID) {
+        this.UserID = UserID;
     }
 
-    @Basic
-    @Column(name = "Brief")
+
     public String getBrief() {
         return Brief;
     }
-    public void setBrief(String brief) {
-        this.Brief = brief;
+    public void setBrief(String Brief) {
+        this.Brief = Brief;
     }
 
-    @Basic
-    @Column(name = "Name")
     public String getName() {
         return Name;
     }
-    public void setName(String name) {
-        this.Name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
 

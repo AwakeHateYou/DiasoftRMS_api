@@ -5,28 +5,28 @@ import org.hibernate.Session;
 import dataBase.dbUtils;
 import model.User;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
-
+import static dataBase.dbUtils.allObjectWithClass;
+//Usage tUser
 public class Login {
-    private final long UserID;
-    private final String Name;
-    private final String Result;
+    private long UserID = 0;
+    private String Name = "";
 
     public Login(String userName) {
         Session session = dbUtils.getSession();
-        Query query = session.createSQLQuery("select * from tUser where Brief = :USERNAME")
+        Query query = session.createSQLQuery("select UserID, Name, Brief from tUser where Brief = :USERNAME")
                 .setParameter("USERNAME", userName);
-        java.util.List result = query.list();
+        List result = query.list();
+        //List<User>  result = dbUtils.allObjectWithClass(User.class);
         if (result != null){
-            Object item  =  result.get(0);
-            this.UserID = 1;
-            this.Name = "eterentev";
-            this.Result = item.toString();
-        } else {
-            this.UserID = 1;
-            this.Name = "eterentev";
-            this.Result = "";
+            Object[] item = (Object[]) result.get(0);
+            this.UserID = Long.parseLong(item[0].toString());
+            this.Name = item[1].toString().trim();
         }
     }
     public long getUserID() {
@@ -36,7 +36,5 @@ public class Login {
     public String getName() {
         return Name;
     }
-    public String getResult() {
-        return Result;
-    }
+
 }

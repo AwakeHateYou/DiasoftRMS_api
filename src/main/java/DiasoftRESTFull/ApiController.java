@@ -21,4 +21,9 @@ public class ApiController {
     public Login login(@RequestParam(value = "name", defaultValue = "skufirin") String name) {
         return new Login(name);
     }
+
+    @RequestMapping("/works")
+    public ActualWorks actualWorks(@RequestParam(value = "userid", defaultValue = "0") String userid) {
+        return new ActualWorks(userid);
+    }
 }
