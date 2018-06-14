@@ -26,4 +26,8 @@ public class ApiController {
     public ActualWorks actualWorks(@RequestParam(value = "userid", defaultValue = "0") String userid) {
         return new ActualWorks(userid);
     }
+    @RequestMapping("/farewell")
+    public Farewell farewell(@RequestParam(value = "userid", defaultValue = "0") String userid) {
+        return new Farewell();
+    }
 }
